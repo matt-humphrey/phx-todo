@@ -1,0 +1,31 @@
+<section class="phx-hero">
+  <h1>Todo List</h1>
+  <p>What's on your plate?</p>
+</section>
+
+<ol>
+  <%= for item <- @todo do %>
+    <li><%= item %></li>
+  <% end %>
+</ol>
+
+<section>
+  <article>
+    <%= form_for @conn, Routes.page_path(@conn, :add), fn form -> %>
+    <%= text_input form, :add %>
+      <%= submit "Add" %>
+    <% end %>
+  </article>
+  <article>
+    <%= form_for @conn, Routes.page_path(@conn, :update), fn new_content -> %>
+    <%= text_input new_content, :new_content %>
+      <%= submit "Update" %>
+    <% end %>
+</article>
+  <article>
+    <%= form_for @conn, Routes.page_path(@conn, :delete), fn form -> %>
+    <%= number_input form, :delete %>
+      <%= submit "Delete" %>
+    <% end %>
+  </article>
+</section>
